@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AuditLogEntry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "task_id",
+    "timestamp",
+    "event_type"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "agent_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "model": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "event_type": {
+      "type": "string"
+    },
+    "source_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tool_calls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "missing_data": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inferred_data": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "calculation_inputs": {
+      "type": "object"
+    },
+    "verification_result": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "final_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "x_total": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "y_total": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "z_total": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "ci_score": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "retry_count": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0
+    },
+    "human_override": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
