@@ -1,0 +1,12 @@
+# DESIGN PROPOSAL — requires calibration
+protocol_alpha:
+  y_total_min: 40
+protocol_beta:
+  z_total_min: 50
+ci:
+  normal_min_exclusive: 80
+  review_min_inclusive: 40
+hard_gate:
+  require_expected_equals_verified: true
+  allow_critical_conflicts: false
+  allow_critical_missing_evidence: false
