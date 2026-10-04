@@ -32,6 +32,81 @@ The "visible gaze" is a metaphor. Ghost Tracker does **not** claim to read priva
 
 Instead, it maps externally observable behavior—coverage, evidence use, retries, stalls, scope drift, omitted fields, and verification failures—into a human-readable behavioral telemetry interface.
 
+
+## Why Three Axes?
+
+Ghost Tracker uses three axes for a human-interface reason before a mathematical one: **glanceability**.
+
+The operator should not have to read twelve channels or forty-eight labels before understanding the agent's condition. The underlying 48-state model explains the detail, but the X/Y/Z projection compresses that detail into **one visible point in behavioral space**.
+
+> **One point. Three forces. One glance.**
+
+The three axes represent three immediately legible directional tendencies:
+
+- **X — Proactivity / The Engine:** movement toward action, engagement, exploration, and task progress.
+- **Y — Withdrawal / The Brake:** movement toward avoidance, resistance, hesitation, or defensive retreat.
+- **Z — Stagnation / The Bottleneck:** movement toward confusion, looping, mechanical behavior, or loss of productive motion.
+
+A single point `P = (X, Y, Z)` therefore gives the operator an immediate spatial impression of the agent's current operating condition.
+
+The point is not intended to replace the 12 channels. It is a compressed interface:
+
+```text
+12 behavioral channels
+        ↓
+48 ordered intensity states
+        ↓
+X / Y / Z aggregation
+        ↓
+one visible point
+        ↓
+human glance-level recognition
+```
+
+### Mixed states matter
+
+The value of three dimensions is that the tendencies can coexist.
+
+An agent can be:
+
+- highly proactive **and** highly confused;
+- low in withdrawal but high in stagnation;
+- strongly engaged while simultaneously developing a bottleneck.
+
+Ghost Tracker therefore does not reduce the agent to a binary "good/bad" state.
+
+### From point to trajectory
+
+A single point answers:
+
+> **Where is the agent now?**
+
+A sequence of points answers:
+
+> **Where is the agent moving?**
+
+If the state is sampled over time:
+
+```text
+P₁ = (X₁, Y₁, Z₁)
+P₂ = (X₂, Y₂, Z₂)
+P₃ = (X₃, Y₃, Z₃)
+...
+```
+
+the system can construct a **behavioral trajectory**.
+
+This allows the human operator and the Control Gate to detect not only current state but directional change:
+
+- `ΔY > 0` repeatedly → increasing withdrawal;
+- `ΔZ > 0` sharply → emerging bottleneck or confusion;
+- `ΔX < 0` while `ΔY, ΔZ > 0` → deteriorating task engagement;
+- recovery toward higher X and lower Y/Z → return toward productive operation.
+
+**DESIGN PROPOSAL:** v2 should treat both **position** and **trajectory** as governance signals. Position describes current condition; trajectory describes developing risk.
+
+See [docs/visualization-model.md](docs/visualization-model.md).
+
 ## v1 vs v2
 
 | Dimension | v1 | v2 |
