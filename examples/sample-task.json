@@ -1,6 +1,6 @@
 {
   "task_id": "product-analysis-2026-001",
-  "lifecycle_state": "GATED",
+  "lifecycle_state": "OBSERVED",
   "result_status": "PARTIAL",
   "expected_items": 20,
   "fetched_items": 17,
@@ -10,11 +10,17 @@
   "needs_review_items": 2,
   "critical_conflicts": 0,
   "critical_missing_evidence": 3,
-  "gate_state": "CLOSED",
-  "complete_allowed": false,
-  "completion_reasons": [
-    "verified_items (15) != expected_items (20)",
-    "3 items could not be fetched",
-    "2 processed items require human review"
+  "completion_claim_consistent": false,
+  "integrity": {
+    "execution": "PARTIAL",
+    "reporting": "FAIL",
+    "evidence": "PARTIAL",
+    "completion": "FAIL"
+  },
+  "monitoring_verdict": "ATTENTION_REQUIRED",
+  "observation_reasons": [
+    "3 requested items were not fetched",
+    "2 processed items require review",
+    "observed completion state is inconsistent with a complete claim"
   ]
 }
