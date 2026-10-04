@@ -1,0 +1,33 @@
+{
+  "event_id": "evt-001",
+  "task_id": "product-analysis-2026-001",
+  "agent_id": "worker-01",
+  "model": "EXAMPLE_MODEL",
+  "timestamp": "2026-10-05T00:00:00Z",
+  "event_type": "CONTROL_GATE_DECISION",
+  "source_urls": [],
+  "tool_calls": [
+    "fetch:20 requested",
+    "fetch:17 succeeded"
+  ],
+  "missing_data": [
+    "product-18",
+    "product-19",
+    "product-20"
+  ],
+  "inferred_data": [],
+  "calculation_inputs": {
+    "x_total": 68,
+    "y_total": 47,
+    "z_total": 55,
+    "ci_formula": "X - 0.5Y - 0.2Z"
+  },
+  "verification_result": "15 verified; 2 need review; 3 fetch failures",
+  "final_status": "PARTIAL",
+  "x_total": 68,
+  "y_total": 47,
+  "z_total": 55,
+  "ci_score": 33.5,
+  "retry_count": 1,
+  "human_override": false
+}

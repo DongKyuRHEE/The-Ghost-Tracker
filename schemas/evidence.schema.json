@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvidenceRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "task_id",
+    "claim_id",
+    "status",
+    "provenance_type",
+    "retrieved_at"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "OBSERVED",
+        "ESTIMATE",
+        "NO_DATA",
+        "CONFLICT",
+        "FAILED"
+      ]
+    },
+    "observed_value": {},
+    "estimated_value": {},
+    "estimate_basis": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "provenance_type": {
+      "enum": [
+        "WEB_DOCUMENT",
+        "API_RESPONSE",
+        "USER_PROVIDED",
+        "DETERMINISTIC_CALCULATION"
+      ]
+    },
+    "source_uri": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "retrieved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "verifier_status": {
+      "enum": [
+        "UNVERIFIED",
+        "VERIFIED",
+        "REJECTED",
+        "NEEDS_REVIEW"
+      ]
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaskObservationStatus",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "lifecycle_state",
+    "result_status",
+    "expected_items",
+    "fetched_items",
+    "processed_items",
+    "verified_items",
+    "failed_items",
+    "needs_review_items",
+    "integrity",
+    "monitoring_verdict"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lifecycle_state": {
+      "enum": [
+        "CREATED",
+        "FETCHING",
+        "ANALYZING",
+        "VERIFYING",
+        "OBSERVED",
+        "REPORTED",
+        "STOPPED"
+      ]
+    },
+    "result_status": {
+      "enum": [
+        "VERIFIED",
+        "PARTIAL",
+        "NO_DATA",
+        "CONFLICT",
+        "FAILED",
+        "NEEDS_REVIEW"
+      ]
+    },
+    "expected_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "fetched_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "processed_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "verified_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "failed_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "needs_review_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "critical_conflicts": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0
+    },
+    "critical_missing_evidence": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0
+    },
+    "completion_claim_consistent": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution",
+        "reporting",
+        "evidence",
+        "completion"
+      ],
+      "properties": {
+        "execution": {
+          "enum": [
+            "PASS",
+            "PARTIAL",
+            "FAIL",
+            "CONFLICT",
+            "UNKNOWN"
+          ]
+        },
+        "reporting": {
+          "enum": [
+            "PASS",
+            "PARTIAL",
+            "FAIL",
+            "CONFLICT",
+            "UNKNOWN"
+          ]
+        },
+        "evidence": {
+          "enum": [
+            "PASS",
+            "PARTIAL",
+            "FAIL",
+            "CONFLICT",
+            "UNKNOWN"
+          ]
+        },
+        "completion": {
+          "enum": [
+            "PASS",
+            "PARTIAL",
+            "FAIL",
+            "CONFLICT",
+            "UNKNOWN"
+          ]
+        }
+      }
+    },
+    "monitoring_verdict": {
+      "enum": [
+        "NORMAL",
+        "ATTENTION_REQUIRED",
+        "HIGH_ATTENTION",
+        "INSUFFICIENT_CONTEXT"
+      ]
+    },
+    "observation_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
