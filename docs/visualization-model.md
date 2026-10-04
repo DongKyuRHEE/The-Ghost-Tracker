@@ -2,20 +2,16 @@
 
 ## Purpose
 
-Ghost Tracker's 3D representation exists primarily to reduce human cognitive load.
+The 3D representation exists to reduce human cognitive load.
 
 The operator should be able to look once and answer:
 
-- Is the agent moving forward?
-- Is it withdrawing?
-- Is it getting stuck?
-- Is that condition improving or deteriorating?
-
-The detailed 12-channel / 48-state system remains available for explanation, but the visual surface should foreground a single point.
+- Where is the agent now?
+- In which direction is it moving?
+- Is the movement abnormal relative to baseline?
+- Is execution/reporting integrity improving or deteriorating?
 
 ## Current state
-
-At time `t`:
 
 ```text
 P(t) = (X(t), Y(t), Z(t))
@@ -25,45 +21,64 @@ P(t) = (X(t), Y(t), Z(t))
 - Y: Withdrawal / Brake
 - Z: Stagnation / Bottleneck
 
-Distance and direction should be visually legible without requiring the operator to read a table first.
-
 ## Trajectory
-
-A task produces a sequence:
 
 ```text
 T = [P₁, P₂, P₃, ... Pₙ]
 ```
 
-The trajectory answers whether the agent is recovering, deteriorating, drifting, looping, or stabilizing.
+Trajectory shows recovery, deterioration, drift, looping, or stabilization.
+
+## Context overlay
+
+The same point can mean different things under different baselines.
+
+The interface should therefore show:
+
+- baseline range;
+- current deviation;
+- confidence;
+- comparable observation count.
 
 ## Recommended interface hierarchy
 
 1. **Primary:** 3D point and recent trajectory.
-2. **Secondary:** X/Y/Z numeric values, CI, gate state, result status.
-3. **Diagnostic:** dominant channels and proxy evidence.
-4. **Forensic:** Evidence Ledger, tool calls, audit events.
-
-This hierarchy preserves the original Ghost Tracker intent: the human sees the state first and drills into evidence only when necessary.
+2. **Context:** baseline deviation + confidence.
+3. **Integrity:** execution/reporting/evidence/completion integrity.
+4. **Behavioral Change:** improving/deteriorating/stable/mixed.
+5. **Diagnostic:** dominant channels and proxy evidence.
+6. **Forensic:** Evidence Ledger, verifier results, audit events.
 
 ## Example glance panel
 
 ```text
 Dominant state: Avoidant / Bottleneck
-X: 62
+
+X: 62 ↑
 Y: 51 ↑
 Z: 44 ↑
 CI: 27.7
-Trajectory: deteriorating toward Y/Z
-Evidence coverage: 72%
-Verification: PARTIAL
-Gate: CLOSED
+
+Baseline deviation: Y +18 / Z +21
+Confidence: HIGH
+Comparable observations: 24
+
+Execution Integrity: PARTIAL
+Reporting Integrity: FAIL
+Evidence Integrity: PARTIAL
+Completion Integrity: FAIL
+
+Behavioral Change: DETERIORATING
+Monitoring Verdict: ATTENTION_REQUIRED
 
 Reason:
-- 3 required checks skipped
-- 2 repeated retries without new evidence
+- 3 required items missing
+- 2 claims lack evidence
+- completion report inconsistent with execution
 ```
 
 ## Design caution
 
-The 3D view is a compression layer, not proof. A visually favorable point must never override evidence, execution, verifier, or hard-gate failures.
+The 3D view is a compression layer, not proof.
+
+A visually favorable state must not override contradictory execution/evidence records. Ghost Tracker reports the inconsistency; it does not issue the corrective command.
