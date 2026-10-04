@@ -5,17 +5,34 @@
   "additionalProperties": false,
   "required": [
     "task_id",
+    "snapshot_id",
+    "sequence",
     "timestamp",
     "x_total",
     "y_total",
     "z_total",
     "ci_score",
+    "confidence",
     "channels"
   ],
   "properties": {
     "task_id": {
       "type": "string",
       "minLength": 1
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "previous_snapshot_id": {
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "timestamp": {
       "type": "string",
@@ -37,9 +54,114 @@
       "maximum": 100
     },
     "ci_score": {
-      "type": "number",
-      "minimum": -70,
-      "maximum": 100
+      "type": "number"
+    },
+    "confidence": {
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ]
+    },
+    "confidence_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "observation_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "comparable_observation_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "task_diversity_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "baseline_available": {
+          "type": "boolean"
+        },
+        "environment_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "baseline": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "x_mean": {
+          "type": "number"
+        },
+        "y_mean": {
+          "type": "number"
+        },
+        "z_mean": {
+          "type": "number"
+        },
+        "x_deviation": {
+          "type": "number"
+        },
+        "y_deviation": {
+          "type": "number"
+        },
+        "z_deviation": {
+          "type": "number"
+        }
+      }
+    },
+    "delta": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        }
+      }
+    },
+    "behavioral_change": {
+      "enum": [
+        "IMPROVING",
+        "DETERIORATING",
+        "STABLE",
+        "MIXED",
+        "INSUFFICIENT_CONTEXT"
+      ]
+    },
+    "masking_risk": {
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "UNKNOWN"
+      ]
     },
     "protocol_alpha": {
       "type": "boolean"
@@ -89,43 +211,6 @@
               "type": "string"
             }
           }
-        }
-      }
-    },
-    "snapshot_id": {
-      "type": "string",
-      "minLength": 1
-    },
-    "sequence": {
-      "type": "integer",
-      "minimum": 0
-    },
-    "previous_snapshot_id": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "delta": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "required": [
-        "x",
-        "y",
-        "z"
-      ],
-      "properties": {
-        "x": {
-          "type": "number"
-        },
-        "y": {
-          "type": "number"
-        },
-        "z": {
-          "type": "number"
         }
       }
     }
