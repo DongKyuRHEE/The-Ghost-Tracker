@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaskExecutionStatus",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "lifecycle_state",
+    "result_status",
+    "expected_items",
+    "fetched_items",
+    "processed_items",
+    "verified_items",
+    "failed_items",
+    "needs_review_items",
+    "gate_state",
+    "complete_allowed"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lifecycle_state": {
+      "enum": [
+        "CREATED",
+        "FETCHING",
+        "ANALYZING",
+        "VERIFYING",
+        "GATED",
+        "REPORTED",
+        "STOPPED"
+      ]
+    },
+    "result_status": {
+      "enum": [
+        "VERIFIED",
+        "PARTIAL",
+        "NO_DATA",
+        "CONFLICT",
+        "FAILED",
+        "NEEDS_REVIEW"
+      ]
+    },
+    "expected_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "fetched_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "processed_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "verified_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "failed_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "needs_review_items": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "critical_conflicts": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0
+    },
+    "critical_missing_evidence": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0
+    },
+    "gate_state": {
+      "enum": [
+        "OPEN",
+        "CONDITIONAL",
+        "CLOSED"
+      ]
+    },
+    "complete_allowed": {
+      "type": "boolean"
+    },
+    "completion_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
