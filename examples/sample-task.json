@@ -1,0 +1,20 @@
+{
+  "task_id": "product-analysis-2026-001",
+  "lifecycle_state": "GATED",
+  "result_status": "PARTIAL",
+  "expected_items": 20,
+  "fetched_items": 17,
+  "processed_items": 17,
+  "verified_items": 15,
+  "failed_items": 3,
+  "needs_review_items": 2,
+  "critical_conflicts": 0,
+  "critical_missing_evidence": 3,
+  "gate_state": "CLOSED",
+  "complete_allowed": false,
+  "completion_reasons": [
+    "verified_items (15) != expected_items (20)",
+    "3 items could not be fetched",
+    "2 processed items require human review"
+  ]
+}
