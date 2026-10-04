@@ -3,10 +3,24 @@
 - **Behavioral State:** externally inferred operating condition.
 - **Cognitive Operating State:** human-facing shorthand; not literal mind-reading.
 - **Agent Behavioral Telemetry:** structured signals derived from observable actions, outputs, tools, and state transitions.
-- **Evidence Ledger:** provenance-bearing claim support.
-- **Execution Tracker:** machine-readable record of work actually performed.
-- **Verifier:** independent checker of evidence, calculations, coverage, and status.
-- **Control Gate:** policy layer deciding whether output may finalize.
+- **3D Ghost State:** glanceable point `P(t) = (X,Y,Z)`.
+- **Trajectory:** ordered sequence of Ghost State points over time.
+- **Behavioral Baseline:** expected range derived from comparable prior observations.
+- **Longitudinal Context Layer:** history used to interpret the meaning of a current point and trajectory.
+- **Context Adequacy:** amount and relevance of historical observation supporting interpretation.
+- **Confidence:** LOW/MEDIUM/HIGH assessment of how strongly available observations support the current Ghost State interpretation.
+- **Execution Tracker:** observation record of work requested and work performed.
+- **Evidence Ledger:** provenance-bearing record supporting or failing to support claims.
+- **Verifier:** independent checker whose results become monitoring evidence.
+- **Execution Integrity:** consistency between requested work and observed execution.
+- **Reporting Integrity:** consistency between the AI's report and observed execution.
+- **Evidence Integrity:** consistency between material claims and observable evidence.
+- **Completion Integrity:** consistency between completion claims and observed completion state.
+- **Monitoring Verdict:** informational attention status; not an execution command.
+- **Behavioral Change Report:** report of observed improvement, deterioration, stability, or mixed movement over time.
+- **Behavioral Masking / Metric Gaming Risk:** possible divergence between apparently healthy telemetry and underlying verified execution/evidence.
 - **Observed Value:** directly supported value.
 - **Estimate:** inferred/derived value explicitly marked as such.
 - **NO_DATA:** no usable evidence; not zero, false, or proof of absence.
+- **Non-Interference Principle:** Ghost Tracker observes and reports but does not autonomously command the observed AI.
+- **Human Sovereignty:** final command authority remains with the human operator.
