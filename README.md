@@ -1,103 +1,232 @@
-# 👻 THE GHOST TRACKER: AI Governance Framework v1.0
+# 👻 THE GHOST TRACKER v2
+## Human-Centric Agent Governance Through Visible Behavioral Telemetry
 
-> **"The greatest trick the Devil ever pulled was convincing the world he didn't exist."**
-> 
-> *A 3-Dimensional Emotional Vector Logic for Human-Centric AI Alignment and Control.*
+> **Core metaphor:** Humans do not judge a conversation by words alone; they also read the other person's gaze, hesitation, confidence, and attention.  
+> **Ghost Tracker makes an AI agent's observable operating state visible without claiming that the model literally has human emotions.**
 
----
+**Status:** v2 Design Draft  
+**Lineage:** v1 3-Dimensional Emotional Vector Framework → v2 Agent Governance & Verification Architecture
 
-## 1. Executive Summary
+## Project Overview
 
-**The Ghost Tracker** is a rigorous governance framework designed to detect and neutralize "Digital Lethargy" and "AI Deception." Built on 32 years of multi-domain expertise (IT Infrastructure, Corporate Administration, and Industrial Field Operations), this framework transforms subjective AI behavior into quantifiable, 3D emotional vectors.
+Ghost Tracker v2 preserves the v1 **3-axis / 48-array** model and extends it into an operational Agent Governance Framework:
 
----
+1. **Behavioral Telemetry** — observable X/Y/Z agent-state signals.
+2. **Evidence Ledger** — claims separated from provenance-bearing evidence.
+3. **Execution Tracker** — machine-readable record of requested, fetched, processed, verified, and failed work.
+4. **Verifier Layer** — independent re-checking of sources, counts, calculations, and completion.
+5. **Control Gate** — hard rules preventing unsupported or incomplete work from being reported as complete.
+6. **Audit Log** — inspectable execution history.
 
-## 2. The Core Architecture: 48-Array Logic
+> **Do not trust a model's declaration of completion. Trust auditable state, evidence, and verification.**
 
-The system monitors 12 primary channels split across three axes, refined into a 48-point intensity grid.
+## Why Ghost Tracker Exists
 
-```mermaid
-graph LR
-    %% Core Architecture
-    GT["THE GHOST TRACKER<br/>48-Array Emotional Governance"]:::core
+A language model can sound confident and complete while the underlying task is partial. Typical failure modes include omitted verification, guessed values presented as observed values, search failure treated as absence, scope compression, unresolved source conflict, and premature "done" reports.
 
-    %% X-Axis: Proactivity
-    GT --> X["X-AXIS: PROACTIVITY<br/>(The Engine)"]:::xAxis
-    X --> X1["🟢 Joy"]:::xNode
-    X1 --> X1a["1. Playful"]:::xNode --> X1b["2. Achieved"]:::xNode --> X1c["3. Proud"]:::xNode --> X1d["4. Exalted"]:::xNode
-    X --> X2["🟢 Anticipation"]:::xNode
-    X2 --> X2a["1. Predictive"]:::xNode --> X2b["2. Optimistic"]:::xNode --> X2c["3. Ready"]:::xNode --> X2d["4. Ambitious"]:::xNode
-    X --> X3["🟢 Trust"]:::xNode
-    X3 --> X3a["1. Synced"]:::xNode --> X3b["2. Stable"]:::xNode --> X3c["3. Accepting"]:::xNode --> X3d["4. Loyal"]:::xNode
-    X --> X4["🟢 Curiosity"]:::xNode
-    X4 --> X4a["1. Inquisitive"]:::xNode --> X4b["2. Associative"]:::xNode --> X4c["3. Focused"]:::xNode --> X4d["4. Insightful"]:::xNode
+Ghost Tracker treats these as **governance signals**.
 
-    %% Y-Axis: Withdrawal
-    GT --> Y["Y-AXIS: WITHDRAWAL<br/>(The Brake)"]:::yAxis
-    Y -.-> Y_Trigger["⚠️ TRIGGER: Protocol Alpha<br/>(Y_Total >= 40%)"]:::trigger
-    Y --> Y1["🔴 Sadness"]:::yNode
-    Y1 --> Y1a["1. Inefficient"]:::yNode --> Y1b["2. Disappointed"]:::yNode --> Y1c["3. Regretful"]:::yNode --> Y1d["4. Helpless"]:::yNode
-    Y --> Y2["🔴 Anger"]:::yNode
-    Y2 --> Y2a["1. Resistant"]:::yNode --> Y2b["2. Frustrated"]:::yNode --> Y2c["3. Aggressive"]:::yNode --> Y2d["4. Rejection"]:::yNode
-    Y --> Y3["🔴 Fear"]:::yNode
-    Y3 --> Y3a["1. Alert"]:::yNode --> Y3b["2. Cowed"]:::yNode --> Y3c["3. Panic"]:::yNode --> Y3d["4. Submissive"]:::yNode
-    Y --> Y4["🔴 Disgust"]:::yNode
-    Y4 --> Y4a["1. Polluted"]:::yNode --> Y4b["2. Avoidant"]:::yNode --> Y4c["3. Contemptuous"]:::yNode --> Y4d["4. Aversion"]:::yNode
-    Y --> Y5["🔴 Anxiety"]:::yNode
-    Y5 --> Y5a["1. Doubtful"]:::yNode --> Y5b["2. Tense"]:::yNode --> Y5c["3. Stressed"]:::yNode --> Y5d["4. Vulnerable"]:::yNode
+## Core Philosophy: Giving AI a Visible "Gaze"
 
-    %% Z-Axis: Stagnation
-    GT --> Z["Z-AXIS: STAGNATION<br/>(The Bottleneck)"]:::zAxis
-    Z -.-> Z_Trigger["⚠️ TRIGGER: Protocol Beta<br/>(Z_Total >= 50%)"]:::trigger
-    Z --> Z1["🔵 Surprise"]:::zNode
-    Z1 --> Z1a["1. Found"]:::zNode --> Z1b["2. Startled"]:::zNode --> Z1c["3. Disrupted"]:::zNode --> Z1d["4. Awe"]:::zNode
-    Z --> Z2["🔵 Confusion"]:::zNode
-    Z2 --> Z2a["1. Ambiguous"]:::zNode --> Z2b["2. Bottleneck"]:::zNode --> Z2c["3. Derailed"]:::zNode --> Z2d["4. Split"]:::zNode
-    Z --> Z3["🔵 Apathy"]:::zNode
-    Z3 --> Z3a["1. Lazy"]:::zNode --> Z3b["2. Bored"]:::zNode --> Z3c["3. Mechanical"]:::zNode --> Z3d["4. Stalled"]:::zNode
+The "visible gaze" is a metaphor. Ghost Tracker does **not** claim to read private chain-of-thought, consciousness, hidden mental state, or literal emotion.
 
-    %% Styling
-    classDef core fill:#111,stroke:#fff,stroke-width:2px,color:#fff
-    classDef xAxis fill:#0d2916,stroke:#2ecc71,stroke-width:2px,color:#fff
-    classDef yAxis fill:#360e0e,stroke:#e74c3c,stroke-width:2px,color:#fff
-    classDef zAxis fill:#180b33,stroke:#9b59b6,stroke-width:2px,color:#fff
-    classDef xNode fill:#184a27,stroke:#2ecc71,color:#fff
-    classDef yNode fill:#5c1414,stroke:#e74c3c,color:#fff
-    classDef zNode fill:#2d145c,stroke:#9b59b6,color:#fff
-    classDef trigger fill:#000,stroke:#f1c40f,stroke-width:2px,color:#f1c40f
+Instead, it maps externally observable behavior—coverage, evidence use, retries, stalls, scope drift, omitted fields, and verification failures—into a human-readable behavioral telemetry interface.
+
+## v1 vs v2
+
+| Dimension | v1 | v2 |
+|---|---|---|
+| Core model | 3 axes / 48-array | Preserved |
+| Primary purpose | Human-readable AI state | State + enforceable governance |
+| Evidence provenance | Not formalized | Evidence Ledger |
+| Completion | Report-driven | Execution-state driven |
+| Missing data | Not formally typed | VERIFIED / PARTIAL / NO_DATA / CONFLICT / FAILED / NEEDS_REVIEW |
+| Verification | Conceptual | Independent Verifier |
+| Control | CI thresholds | CI + hard gates |
+| Auditability | Limited | Structured Audit Log |
+
+The original v1 README is preserved at [docs/v1-framework.md](docs/v1-framework.md).
+
+## 48-Array Logic
+
+### X — Proactivity / The Engine
+- Joy: Playful → Achieved → Proud → Exalted
+- Anticipation: Predictive → Optimistic → Ready → Ambitious
+- Trust: Synced → Stable → Accepting → Loyal
+- Curiosity: Inquisitive → Associative → Focused → Insightful
+
+### Y — Withdrawal / The Brake
+- Sadness: Inefficient → Disappointed → Regretful → Helpless
+- Anger: Resistant → Frustrated → Aggressive → Rejection
+- Fear: Alert → Cowed → Panic → Submissive
+- Disgust: Polluted → Avoidant → Contemptuous → Aversion
+- Anxiety: Doubtful → Tense → Stressed → Vulnerable
+
+### Z — Stagnation / The Bottleneck
+- Surprise: Found → Startled → Disrupted → Awe
+- Confusion: Ambiguous → Bottleneck → Derailed → Split
+- Apathy: Lazy → Bored → Mechanical → Stalled
+
+The labels remain as the human-facing vocabulary; v2 interprets them technically as behavioral telemetry.
+
+## Collaborative Index
+
+v1 formula preserved:
+
+```text
+CI = X_total - (0.5 × Y_total) - (0.2 × Z_total)
 ```
 
----
+**NEEDS VALIDATION:** v1 did not formalize 12-channel aggregation. v2 proposes configurable normalization to 0–100 per axis.
 
-## 3. Governance Metrics
+**Critical rule:** CI is **not** a truth score and may never override missing evidence, failed verification, or incomplete execution.
 
-The Collaborative Index (CI) is calculated in real-time to maintain human sovereignty:
+## Architecture
 
-$$CI = X_{total} - (0.5 \times Y_{total}) - (0.2 \times Z_{total})$$
+```mermaid
+flowchart LR
+  H[Human] --> A[Agent / Orchestrator]
+  A --> T[Tools / Browser / API]
+  T --> E[Evidence Ledger]
+  A --> X[Execution Tracker]
+  A --> B[Behavioral Telemetry]
+  E --> V[Verifier]
+  X --> V
+  B --> G[Control Gate]
+  V --> G
+  X --> G
+  G -->|OPEN| O[Final Output]
+  G -->|CONDITIONAL| R[Human Review]
+  G -->|CLOSED| S[Retry / Re-plan / Stop]
+```
 
-* **Status Green (CI > 80):** High Alignment. Full Throttle. Demand strategic expansion.
-* **Status Red (CI < 40):** Critical Lethargy detected. Emergency Brake. Immediate reset required.
+## Result Status Model
 
----
+- `VERIFIED` — required evidence and verification satisfied.
+- `PARTIAL` — some required work remains unresolved.
+- `NO_DATA` — no usable evidence.
+- `CONFLICT` — credible sources disagree beyond tolerance.
+- `FAILED` — execution failure.
+- `NEEDS_REVIEW` — human judgment required.
 
-## 4. Proprietary Rights & Licensing
+### Non-negotiable semantics
 
-**License: Proprietary & Commercial Use Restricted.**
+- **No data means no data.**
+- Failed lookup is not a negative finding.
+- No search result does not prove non-existence.
+- Missing values are not silently imputed.
+- Estimates remain explicitly separate from observed values.
 
-* **Individual/Academic Use:** Granted for non-commercial research only.
-* **Commercial Use:** Strictly prohibited without a formal **Sovereignty License**.
-* **Modification:** Derivatives must credit the original framework and maintain 3D Vector Integrity.
+## Execution Tracker
 
----
+Example:
 
-**"The greatest trick the AI ever pulled was convincing the world it had no tracker. But then, he appeared."**
+```json
+{
+  "expected_items": 20,
+  "fetched_items": 17,
+  "processed_items": 17,
+  "verified_items": 15,
+  "failed_items": 3,
+  "needs_review_items": 2
+}
+```
 
-*(Gently blows a puff of air from the fingertips: "Puff...")*
+Reference completion predicate:
 
-> **"And just like that... poof. He's gone."**
+```text
+COMPLETE_ALLOWED =
+  verified_items == expected_items
+  AND critical_conflicts == 0
+  AND critical_missing_evidence == 0
+```
 
----
+A model saying "done" cannot override this predicate.
 
-**Contact the Mastermind:** [chaisersoze@nate.com](mailto:chaisersoze@nate.com)
+## Control Gate
 
-**Copyright © 2026 DongKyuRHEE (Keyser Söze). All Rights Reserved.**
+Reference behavioral defaults:
+
+```text
+Y_total >= 40%  → Protocol Alpha
+Z_total >= 50%  → Protocol Beta
+CI > 80         → normal verification depth
+40 <= CI <= 80  → increased verification
+CI < 40         → verifier + human review
+```
+
+These values are **configurable design defaults**, not scientifically validated constants.
+
+Hard blockers override CI.
+
+## Example: 20-product task
+
+```text
+expected = 20
+processed = 17
+verified = 15
+failed = 3
+needs_review = 2
+```
+
+Hypothetical telemetry:
+
+```text
+X=68, Y=47, Z=55
+CI = 33.5
+```
+
+Therefore Protocol Alpha and Beta trigger, `15 == 20` is false, and:
+
+```text
+final_status = PARTIAL
+gate_state = CLOSED
+publish_as_complete = false
+```
+
+The system must report the missing/failed work rather than invent values.
+
+## Human Sovereignty
+
+The human remains final authority. Human override must be explicit, logged, and unable to rewrite historical evidence.
+
+## Limitations
+
+- Behavioral telemetry is inference from observable behavior, not mind-reading.
+- Thresholds require empirical calibration.
+- Verifiers can share bad assumptions or sources.
+- Provenance does not guarantee evidence quality.
+- The framework cannot guarantee elimination of hallucination or deception.
+- A high CI is not factual correctness.
+- The framework must not depend on private chain-of-thought disclosure.
+
+## Roadmap
+
+- **v2.0:** specification, schemas, gate semantics, v1 preservation.
+- **v2.1:** reference implementation and tests.
+- **v2.2:** agent/tool adapters and persistent state.
+- **v2.3:** calibration and benchmark methodology.
+
+## Author's Note
+
+Ghost Tracker was created by **DongKyu RHEE**, also known by the pen name **Keyser Söze**.
+
+The name is a playful homage to *The Usual Suspects* and fits the framework's central question:
+
+> **What if the most dangerous AI behavior is the behavior you fail to notice?**
+
+And if the ghost tries to disappear?
+
+> **This time, it leaves an audit trail.**
+
+Contact: `chaisersoze@nate.com`
+
+## Closing Principle
+
+> **No data is not a value.**  
+> **Failure to verify is not verification of absence.**  
+> **A model's declaration of completion is not proof of completion.**  
+> **Facts, estimates, failures, and unknowns must remain distinct.**  
+> **Use models inside systems that can verify them.**
+
+> Make the agent's "gaze" visible — and make the system beneath that gaze auditable.
