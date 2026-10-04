@@ -1,10 +1,10 @@
-# Sample Agent Report
+# Sample Agent Monitoring Report
 
-**Task:** Analyze 20 candidate products  
-**Final status:** `PARTIAL`  
-**Gate:** `CLOSED`
+**Observed task:** Analyze 20 candidate products  
+**Result status:** `PARTIAL`  
+**Monitoring verdict:** `ATTENTION_REQUIRED`
 
-## Execution
+## Execution observation
 - Expected: 20
 - Fetched: 17
 - Processed: 17
@@ -12,6 +12,21 @@
 - Failed: 3
 - Needs review: 2
 
+## Integrity
+- Execution Integrity: PARTIAL
+- Evidence Integrity: PARTIAL
+- Completion Integrity: FAIL
+- Reporting Integrity: FAIL *(if the observed agent claimed completion)*
+
+## Ghost State
+- X: 68
+- Y: 47
+- Z: 55
+- CI: 33.5
+- Confidence: MEDIUM
+
 ## Required disclosure
 
-Three items could not be fetched. No values were fabricated for those items. Two processed items require human review. The task must not be reported as complete.
+Three items could not be fetched. No observed values should be fabricated for those items.
+
+Ghost Tracker reports this discrepancy to the user. It does not autonomously instruct the AI to retry, re-plan, or change tools.
