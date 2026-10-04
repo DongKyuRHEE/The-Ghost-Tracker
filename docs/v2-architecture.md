@@ -1,56 +1,82 @@
 # Ghost Tracker v2 Architecture
 
-Ghost Tracker v2 separates four concerns:
+## Core boundary
 
-1. Behavioral telemetry — observable agent behavior.
-2. Evidence state — what supports each claim.
-3. Execution state — what work actually occurred.
-4. Governance decision — whether finalization is allowed.
+Ghost Tracker v2 is a **monitoring architecture**.
 
-## Hard rule
-A favorable behavioral score never overrides a failed evidence or execution condition.
+It observes an AI agent's behavior, execution state, evidence state, and reporting consistency. It does not autonomously issue task instructions.
 
-```mermaid
-flowchart LR
-  Agent --> Tools
-  Tools --> EvidenceLedger
-  Agent --> ExecutionTracker
-  Agent --> Telemetry
-  EvidenceLedger --> Verifier
-  ExecutionTracker --> Verifier
-  Telemetry --> Gate
-  Verifier --> Gate
-  ExecutionTracker --> Gate
-  Gate --> Output
-  Gate --> HumanReview
+```text
+USER COMMAND
+    ↓
+AI AGENT
+    ↓ observable behavior
+GHOST TRACKER CORE
+    ↓ monitoring report
+HUMAN
+
+Optional external controller:
+Monitoring Report → External Controller → New Command → AI
 ```
 
+The external controller is explicitly outside Ghost Tracker Core.
 
-## Point and trajectory model
+## Core components
 
-The 12 behavioral channels are reduced into a three-axis state vector for human glance-level recognition:
+1. Execution Tracker
+2. Evidence Ledger
+3. Behavioral Telemetry
+4. 3D State Projection
+5. Longitudinal Context Layer
+6. Integrity Assessment
+7. Behavioral Change Report
+8. Audit Log
+
+## Point, trajectory, and context
 
 ```text
 P(t) = [X(t), Y(t), Z(t)]
-```
-
-The current point describes **state**. The ordered sequence of points describes **trajectory**:
-
-```text
 T = {P(t₁), P(t₂), ..., P(tₙ)}
 ```
 
-A governance decision may therefore use both absolute state and rate/direction of change.
+Position describes the current observed state.
+Trajectory describes observed directional change.
+Context determines how unusual that state/change is relative to comparable history.
 
 ```mermaid
 flowchart LR
-  C[12 Behavioral Channels] --> A[X/Y/Z Aggregator]
-  A --> P[Current Point P(t)]
-  P --> V[3D Human-Readable View]
+  A[AI Agent] --> O[Observation Events]
+  O --> BT[Behavioral Telemetry]
+  O --> ET[Execution Tracker]
+  O --> EL[Evidence Ledger]
+
+  BT --> P[3D Point P(t)]
   P --> H[State History]
-  H --> D[Trajectory / Delta]
-  D --> G[Control Gate]
-  P --> G
+  H --> LC[Longitudinal Context]
+  LC --> BR[Baseline / Deviation]
+
+  ET --> IA[Integrity Assessment]
+  EL --> V[Verifier]
+  V --> IA
+
+  BR --> CR[Behavioral Change Report]
+  IA --> CR
+  CR --> U[Human Operator]
+
+  CR -. optional data .-> EC[External Controller]
+  EC -. outside Ghost Tracker Core .-> A
 ```
 
-This is a UX-driven compression model: the 3D point is designed to make state recognizable at a glance, while channel-level evidence remains available for explanation and audit.
+## Non-interference
+
+Ghost Tracker may compute a monitoring verdict such as `NORMAL`, `ATTENTION_REQUIRED`, or `INSUFFICIENT_CONTEXT`.
+
+It must not convert that verdict into an autonomous execution command.
+
+## Behavioral change
+
+A user's intervention may cause the AI's behavior to change. Ghost Tracker observes and reports that change. Causation should not be claimed unless experimentally established.
+
+## Masking risk
+
+The monitored AI's own self-description is not authoritative telemetry. Behavioral masking / metric gaming risk should be assessed by comparing self-report, observed execution, and independently verified evidence.
