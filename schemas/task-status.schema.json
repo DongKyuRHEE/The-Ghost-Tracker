@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "TaskExecutionStatus",
+  "title": "TaskObservationStatus",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -13,8 +13,8 @@
     "verified_items",
     "failed_items",
     "needs_review_items",
-    "gate_state",
-    "complete_allowed"
+    "integrity",
+    "monitoring_verdict"
   ],
   "properties": {
     "task_id": {
@@ -27,7 +27,7 @@
         "FETCHING",
         "ANALYZING",
         "VERIFYING",
-        "GATED",
+        "OBSERVED",
         "REPORTED",
         "STOPPED"
       ]
@@ -76,17 +76,69 @@
       "minimum": 0,
       "default": 0
     },
-    "gate_state": {
-      "enum": [
-        "OPEN",
-        "CONDITIONAL",
-        "CLOSED"
+    "completion_claim_consistent": {
+      "type": [
+        "boolean",
+        "null"
       ]
     },
-    "complete_allowed": {
-      "type": "boolean"
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution",
+        "reporting",
+        "evidence",
+        "completion"
+      ],
+      "properties": {
+        "execution": {
+          "enum": [
+            "PASS",
+            "PARTIAL",
+            "FAIL",
+            "CONFLICT",
+            "UNKNOWN"
+          ]
+        },
+        "reporting": {
+          "enum": [
+            "PASS",
+            "PARTIAL",
+            "FAIL",
+            "CONFLICT",
+            "UNKNOWN"
+          ]
+        },
+        "evidence": {
+          "enum": [
+            "PASS",
+            "PARTIAL",
+            "FAIL",
+            "CONFLICT",
+            "UNKNOWN"
+          ]
+        },
+        "completion": {
+          "enum": [
+            "PASS",
+            "PARTIAL",
+            "FAIL",
+            "CONFLICT",
+            "UNKNOWN"
+          ]
+        }
+      }
     },
-    "completion_reasons": {
+    "monitoring_verdict": {
+      "enum": [
+        "NORMAL",
+        "ATTENTION_REQUIRED",
+        "HIGH_ATTENTION",
+        "INSUFFICIENT_CONTEXT"
+      ]
+    },
+    "observation_reasons": {
       "type": "array",
       "items": {
         "type": "string"
