@@ -103,9 +103,45 @@
       "minimum": 0,
       "default": 0
     },
-    "human_override": {
+    "monitoring_verdict": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "behavioral_change": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "confidence": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "baseline_deviation": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "external_intervention_observed": {
       "type": "boolean",
       "default": false
+    },
+    "external_intervention_description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "masking_risk": {
+      "type": [
+        "string",
+        "null"
+      ]
     }
   }
 }
