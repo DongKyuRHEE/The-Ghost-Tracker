@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GhostState",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "timestamp",
+    "x_total",
+    "y_total",
+    "z_total",
+    "ci_score",
+    "channels"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "x_total": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "y_total": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "z_total": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "ci_score": {
+      "type": "number",
+      "minimum": -70,
+      "maximum": 100
+    },
+    "protocol_alpha": {
+      "type": "boolean"
+    },
+    "protocol_beta": {
+      "type": "boolean"
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "axis",
+          "channel",
+          "intensity",
+          "legacy_label",
+          "proxy_evidence"
+        ],
+        "properties": {
+          "axis": {
+            "enum": [
+              "X",
+              "Y",
+              "Z"
+            ]
+          },
+          "channel": {
+            "type": "string"
+          },
+          "intensity": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "legacy_label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "proxy_evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
