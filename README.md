@@ -207,6 +207,17 @@ The human remains final authority. Human override must be explicit, logged, and 
 - **v2.2:** agent/tool adapters and persistent state.
 - **v2.3:** calibration and benchmark methodology.
 
+## Licensing
+
+**The Ghost Tracker is proprietary. All rights are reserved by DongKyu RHEE (Keyser Söze).**
+
+This repository is public for viewing and reference only. Public visibility does **not** grant permission to use, copy, modify, redistribute, publish, commercialize, or create derivative works.
+
+No non-commercial license is granted. No commercial license is granted. Any use requires prior written permission from the copyright holder.
+
+See [LICENSE](LICENSE) for the controlling notice.
+
+
 ## Author's Note
 
 Ghost Tracker was created by **DongKyu RHEE**, also known by the pen name **Keyser Söze**.
